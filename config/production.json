@@ -1,0 +1,6 @@
+{
+    "host": "http://localhost",
+    "port": 4000,
+    "prefix": "/prod-api"
+  }
+  
