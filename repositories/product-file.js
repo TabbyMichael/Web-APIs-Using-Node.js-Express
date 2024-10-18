@@ -2,25 +2,24 @@
 const fs = require('fs');
 
 // Path/file name to the product data
-const DATA_FILE = './db/product.json';
+const DATA_FILE = './db/product-bad.json';
 
 // Product repository object
 let repo = exports = module.exports = {};
 
 // Retrieve all products
 repo.getAll = function (resolve, reject) {
-  fs.readFile(DATA_FILE, (err, data) => {
-    if (err) {
-      // ERROR: Invoke reject callback
-      reject(err);
-    } else {
-      // SUCCESS: Convert data to JSON
-      let products = JSON.parse(data);
-      // Invoke resolve callback with all products
-      resolve(products);
-    }
-  });
-};
+    fs.readFile(DATA_FILE, (err, data) => {
+      if (err) {
+        console.error("Error reading data file: ", err); // Log the error
+        reject(err);
+      } else {
+        let products = JSON.parse(data);
+        resolve(products);
+      }
+    });
+  };
+  
 
 // Retrieve a single product object by ID
 repo.getById = function (id, resolve, reject) {
